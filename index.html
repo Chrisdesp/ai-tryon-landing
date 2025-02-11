@@ -28,7 +28,7 @@
             color: #666;
             font-size: 18px;
         }
-        .cta-button {
+        .cta-button, .info-button {
             display: inline-block;
             padding: 15px 25px;
             font-size: 18px;
@@ -39,7 +39,7 @@
             text-decoration: none;
             margin-top: 20px;
         }
-        .cta-button:hover {
+        .cta-button:hover, .info-button:hover {
             background-color: #0056b3;
         }
         .email-form {
@@ -69,18 +69,32 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
+    <script>
+        function validateEmail(event) {
+            event.preventDefault();
+            var emailInput = document.getElementById("email");
+            var emailValue = emailInput.value;
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(emailValue)) {
+                alert("Παρακαλώ εισάγετε ένα έγκυρο email.");
+                return;
+            }
+            alert("Ευχαριστούμε για την εγγραφή σας!");
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Δοκιμάστε ρούχα & αξεσουάρ εικονικά με AI & AR!</h1>
         <p>Η νέα εμπειρία online shopping! Δοκιμάστε προϊόντα σε πραγματικό χρόνο από το κινητό ή τον υπολογιστή σας.</p>
-        <img src="https://via.placeholder.com/750x400" alt="AI Virtual Try-On Mockup" class="mockup">
+        <img src="mockup-image.jpg" alt="AI Virtual Try-On Mockup" class="mockup">
         <a href="#" class="cta-button">Δοκιμάστε το Demo</a>
-        <form class="email-form">
+        <form class="email-form" onsubmit="validateEmail(event)">
             <p>Μείνετε ενημερωμένοι & αποκτήστε πρώτοι πρόσβαση!</p>
-            <input type="email" placeholder="Εισάγετε το email σας" required>
+            <input type="email" id="email" placeholder="Εισάγετε το email σας" required>
             <button type="submit">Εγγραφή</button>
         </form>
+        <a href="#more-info" class="info-button">Μάθετε περισσότερα</a>
     </div>
 </body>
 </html>
